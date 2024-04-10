@@ -5,7 +5,7 @@ const int clock_pin = 13;
 const int clock_inhibit = 14;
 const int shift_load = 15;
 const int q_h = 16;
-const long shift_interval = 1000;  // Function will be called once a millisecond
+const long shift_interval = 250;  // Function will be called once a millisecond
 
 // VARIABLE DECLARATIONS
 
@@ -44,14 +44,12 @@ void loop() {
   {
     previous_time = current_time;
     readSR();
-  }
 
-    readSR();
-
-  Serial.print(shift_register_1, BIN);
-  Serial.print(" ");
-  Serial.print(shift_register_2, BIN);
+    Serial.print(shift_register_1, BIN);
+    //Serial.print(" ");
+    //Serial.print(shift_register_2, BIN);
   Serial.println();
+  }
 
 }
 
@@ -93,7 +91,7 @@ void readSR( void ) {
     digitalWrite(clock_inhibit, LOW); // Clock can now be used
 
     shift_register_1 = receiveSR();
-    shift_register_2 = receiveSR();
+    //shift_register_2 = receiveSR();
   //shift_register_3 = receiveSR();
   //shift_register_4 = receiveSR();
   //shift_register_5 = receiveSR();
